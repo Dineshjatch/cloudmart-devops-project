@@ -41,7 +41,7 @@ export default function Dashboard() {
       <div className="mb-8">
 
         <h1 className="text-5xl font-bold">
-          NexusOps Control Center
+          NexusOps Control Centre
         </h1>
 
         <p className="text-slate-400 mt-3 text-lg">
