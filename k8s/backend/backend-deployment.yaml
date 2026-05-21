@@ -23,7 +23,7 @@ spec:
       containers:
       - name: backend
 
-        image: nexusops-backend:1
+        image: nexusops-backend:latest
 
         imagePullPolicy: Never
 

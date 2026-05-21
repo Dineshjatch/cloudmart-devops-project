@@ -60,9 +60,9 @@ pipeline {
 
             steps {
 
-                sh "sed -i 's|nexusops-frontend:.*|nexusops-frontend:${BUILD_NUMBER}|g' k8s/frontend/deployment.yaml"
+                sh "sed -i 's|image: nexusops-frontend.*|image: nexusops-frontend:${BUILD_NUMBER}|g' k8s/frontend/frontend-deployment.yaml"
 
-                sh "sed -i 's|nexusops-backend:.*|nexusops-backend:${BUILD_NUMBER}|g' k8s/backend/deployment.yaml"
+                sh "sed -i 's|image: nexusops-backend.*|image: nexusops-backend:${BUILD_NUMBER}|g' k8s/backend/backend-deployment.yaml"
 
                 sh 'kubectl apply -f k8s/namespace.yaml'
 

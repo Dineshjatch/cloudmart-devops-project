@@ -23,7 +23,7 @@ spec:
       containers:
       - name: frontend
 
-        image: nexusops-frontend:1
+        image: nexusops-frontend:latest
 
         imagePullPolicy: Never
 
