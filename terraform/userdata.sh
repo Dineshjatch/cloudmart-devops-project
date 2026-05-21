@@ -78,3 +78,13 @@ sudo -u ubuntu git clone https://github.com/Dineshjatch/cloudmart-devops-project
 
 # Fix permissions
 chown -R ubuntu:ubuntu /home/ubuntu/cloudmart-devops-project
+
+# Wait for Minikube to fully start
+sleep 60
+
+# Deploy Application Automatically
+cd /home/ubuntu/cloudmart-devops-project
+
+chmod +x scripts/deploy.sh
+
+sudo -u ubuntu bash scripts/deploy.sh
