@@ -10,15 +10,7 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-
-            steps {
-
-                git 'https://github.com/Dineshjatch/cloudmart-devops-project.git'
-
-            }
-
-        }
+        
 
         stage('Verify Tools') {
 
