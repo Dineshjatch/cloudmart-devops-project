@@ -65,6 +65,9 @@ pipeline {
                 sh 'kubectl apply -f k8s/backend/'
                 sh 'kubectl apply -f k8s/frontend/'
 
+                sh 'kubectl rollout restart deployment/frontend -n nexusops'
+                sh 'kubectl rollout restart deployment/backend -n nexusops'
+
             }
 
         }
