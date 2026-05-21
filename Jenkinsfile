@@ -28,7 +28,7 @@ pipeline {
 
             steps {
 
-                sh 'docker build -t nexusops-frontend ./frontend'
+                sh 'docker build -t nexusops-frontend:${BUILD_NUMBER} ./frontend'
 
             }
 
@@ -38,7 +38,7 @@ pipeline {
 
             steps {
 
-                sh 'docker build -t nexusops-backend ./backend'
+                sh 'docker build -t nexusops-backend:${BUILD_NUMBER} ./backend'
 
             }
 
@@ -48,16 +48,21 @@ pipeline {
 
             steps {
 
-                sh 'minikube image load nexusops-frontend'
-                sh 'minikube image load nexusops-backend'
+                sh 'minikube image load nexusops-frontend:${BUILD_NUMBER}'
+                sh 'minikube image load nexusops-backend:${BUILD_NUMBER}'
 
             }
 
         }
 
+        
         stage('Deploy to Kubernetes') {
 
             steps {
+
+                sh "sed -i 's|nexusops-frontend:.*|nexusops-frontend:${BUILD_NUMBER}|g' k8s/frontend/deployment.yaml"
+
+                sh "sed -i 's|nexusops-backend:.*|nexusops-backend:${BUILD_NUMBER}|g' k8s/backend/deployment.yaml"
 
                 sh 'kubectl apply -f k8s/namespace.yaml'
 
