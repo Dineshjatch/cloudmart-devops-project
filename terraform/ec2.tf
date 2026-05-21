@@ -8,6 +8,13 @@ resource "aws_instance" "nexusops_server" {
     aws_security_group.nexusops_sg.id
   ]
 
+  user_data = file("userdata.sh")
+
+  root_block_device {
+    volume_size = 30
+    volume_type = "gp3"
+  }
+
   tags = {
     Name = "NexusOps-DevOps-Server"
   }
