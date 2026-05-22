@@ -45,7 +45,7 @@ export default function Dashboard() {
         </h1>
 
         <p className="text-slate-400 mt-3 text-lg">
-          Cloud infrastructure monitoring and deployment automation platform.
+          Cloud infrastructure monitoring and deployment automation platform
         </p>
 
       </div>
