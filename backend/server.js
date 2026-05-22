@@ -1,11 +1,18 @@
 require("dotenv").config();
 const db = require("./config/db");
 const express = require("express");
+const client = require('prom-client');
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
 const app = express();
+client.collectDefaultMetrics();
+
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', client.register.contentType);
+  res.end(await client.register.metrics());
+});
 
 app.use(cors());
 app.use(express.json());

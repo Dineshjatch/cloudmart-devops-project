@@ -74,6 +74,8 @@ pipeline {
                 sh 'kubectl rollout restart deployment/frontend -n nexusops'
                 sh 'kubectl rollout restart deployment/backend -n nexusops'
 
+                sh 'kubectl rollout restart deployment/prometheus -n nexusops'
+                sh 'kubectl rollout restart deployment/grafana -n nexusops'
             }
 
         }
